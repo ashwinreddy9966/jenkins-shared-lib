@@ -1,4 +1,4 @@
-def info(COMPONENT) {
+def lintCheck(COMPONENT) {
     sh "echo [INFO] : Starting Lint Check for $COMPONENT"
     sh "echo [INFO] : Lint Checks Completed"
 //             sh "npm install jslint"
@@ -6,6 +6,15 @@ def info(COMPONENT) {
 //             sh "node_modules/jslint/bin/jslint.js server.js"
 }
 
-info('COMPONENT')
-
-
+def call() {
+    pipeline {
+        agent any
+        stages {
+            stage('Lint Checks') {
+                steps {
+                    script { lintCheck('XYZ') }
+                }
+            }
+        } // end of stages
+    }
+}
