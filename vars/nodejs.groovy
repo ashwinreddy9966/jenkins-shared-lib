@@ -1,6 +1,6 @@
 def lintCheck() {
-    sh "echo [[ *** INFO *** ]] : Starting Lint Check for $COMPONENT"
-    sh "echo [[ *** INFO *** ]] : Lint Checks Completed"
+    sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
+    sh "echo [[  INFO  ]] : Lint Checks Completed"
 }
 
 def call() {
