@@ -1,7 +1,7 @@
-def info(message) {
+def info(message, URL) {
     echo "Info $message"
 }
 
-info("Hello")
+info("Hello","yahoo.com")
 
 
