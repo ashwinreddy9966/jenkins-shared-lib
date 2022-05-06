@@ -1,6 +1,6 @@
 def lintCheck() {
     sh "ls -ltr"
-    sh "pylint *.py"
+    sh "~/pylint *.py"
     sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
     sh "echo [[  INFO  ]] : Lint Checks Completed"
 }
