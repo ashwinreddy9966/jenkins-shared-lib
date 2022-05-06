@@ -1,6 +1,6 @@
 def lintCheck() {
     sh "pip3 install pylint"
-    sh "/home/centos/pylint *.py"
+    sh "sudo pylint *.py"
     sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
     sh "echo [[  INFO  ]] : Lint Checks Completed"
 }
