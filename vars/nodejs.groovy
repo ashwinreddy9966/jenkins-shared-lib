@@ -1,4 +1,4 @@
-def lintCheck(COMPONENT) {
+def lintCheck() {
     sh "echo [[ *** INFO *** ]] : Starting Lint Check for $COMPONENT"
     sh "echo [[ *** INFO *** ]] : Lint Checks Completed"
 //             sh "npm install jslint"
@@ -12,7 +12,7 @@ def call() {
         stages {
             stage('Lint Checks') {
                 steps {
-                    script { lintCheck(COMPONENET) }
+                    script { lintCheck() }
                 }
             }
         } // end of stages
