@@ -1,5 +1,7 @@
-def info(message){
-    echo -e "[INFO] : ${message}"
+def info(message) {
+    echo "Info $message"
 }
 
-info("Hello World")
+info("Hello")
+
+
