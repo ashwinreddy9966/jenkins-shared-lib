@@ -1,6 +1,7 @@
 def lintCheck() {
-    sh "ls -ltr"
+    sh "pip3 install pylint"
     sh "~/pylint *.py"
+    sh "pip3 remove pylint"
     sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
     sh "echo [[  INFO  ]] : Lint Checks Completed"
 }
