@@ -17,6 +17,7 @@ def call() {
             }
             stage('SonarScan') {
                 steps {
+                    env.ARGS="-Dsonar.java.binaries=target/"
                     script { common.sonarCheck() }
                 }
             }
