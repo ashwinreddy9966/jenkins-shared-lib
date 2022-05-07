@@ -1,5 +1,6 @@
 def lintCheck() {
-    sh "./node_modules/eslint/bin/eslint.js *.js"
+    sh "pwd && ls -ltr"
+    sh "~/node_modules/eslint/bin/eslint.js *.js"
     sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
     sh "echo [[  INFO  ]] : Lint Checks Completed"
 }
