@@ -11,7 +11,7 @@ def sonarCheck() {
 def call() {
     pipeline {
         agent any
-        environment { credentials('SONAR') }
+        environment { SONAR = credentials('SONAR') }
         stages {
             stage('Lint Checks') {
                 steps {
