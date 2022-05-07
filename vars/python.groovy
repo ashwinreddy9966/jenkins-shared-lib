@@ -1,5 +1,5 @@
 def lintCheck() {
-    # sh "~/pylint payment.py"
+
     sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
     sh "echo [[  INFO  ]] : Lint Checks Completed"
 }
