@@ -8,10 +8,18 @@ def lintCheck() {
 def call() {
     pipeline {
         agent any
+        environment { SONAR = credentials('SONAR') }
         stages {
             stage('Lint Checks') {
                 steps {
                     script { lintCheck() }
+                }
+            }
+            stage('SonarScan') {
+                steps {
+                    script {
+                        env.ARGS="-Dsonar.sources=."
+                        common.sonarCheck() }
                 }
             }
         } // end of stages
