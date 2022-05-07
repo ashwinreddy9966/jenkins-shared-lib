@@ -1,8 +1,4 @@
 def lintCheck() {
-    sh "whoami"
-    sh "pwd && ls -ltr"
-    sh  "ls -ltr ~/node_modules/eslint/bin/eslint.js"
-    sh "~/node_modules/eslint/bin/eslint.js server.js"
     sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
     sh "echo [[  INFO  ]] : Lint Checks Completed"
 }
