@@ -17,10 +17,12 @@ def call() {
             }
             stage('SonarScan') {
                 steps {
-                    env.ARGS="-Dsonar.java.binaries=target/"
-                    script { common.sonarCheck() }
+                   
+                    script {
+                        env.ARGS="-Dsonar.java.binaries=target/"
+                        common.sonarCheck() }
+                    }
                 }
-            }
-        } // end of stages
+            } // end of stages
+        }
     }
-}

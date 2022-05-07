@@ -15,11 +15,13 @@ def call() {
             }
             stage('SonarScan') {
                 steps {
-                    env.ARGS="-Dsonar.sources=."
-                    script { common.sonarCheck() }
-                }
-            }
 
-        } // end of stages
+                    script {
+                        env.ARGS="-Dsonar.sources=."
+                        common.sonarCheck() }
+                    }
+                }
+
+            } // end of stages
+        }
     }
-}
