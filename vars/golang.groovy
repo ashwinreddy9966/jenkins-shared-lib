@@ -1,7 +1,6 @@
-env.APP_TYPE = "golang"
-
 def call() {
     node {
+        env.APP_TYPE = "golang"
         common.lintCheck()
         env.ARGS="-Dsonar.sources=."
         common.sonarCheck()
