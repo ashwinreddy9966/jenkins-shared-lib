@@ -47,7 +47,7 @@ def call() {
                 }
                 steps {
                     sh "npm install && ls -ltr && ls -ltr  node_modules"
-                    sh "zip ${COMPONENT}.zip node_modules server.js"
+                    sh "zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
                     sh "ls -ltr"
 
                 }
@@ -57,7 +57,7 @@ def call() {
                     expression { env.TAG_NAME != null }
                 }
                 steps {
-                    sh "curl -F -v -u ${NEXUS}:${NEXUS_PSW} --upload-file ${COMPONENT}.zip http://172.31.5.224:8081/repository/${COMPONENT}/${COMPONENT}.zip"
+                    sh "curl -F -v -u ${NEXUS}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip.zip http://172.31.5.224:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
                 }
             }
         } // end of stages
