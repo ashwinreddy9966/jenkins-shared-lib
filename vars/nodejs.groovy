@@ -56,7 +56,7 @@ def call() {
                     expression { env.TAG_NAME != null }
                 }
                 steps {
-                    sh "echo Uploading the artifacts"
+                    sh "curl -v -u admin:password --upload-file ${COMPONENT}.zip http://172.31.5.224:8081/repository/${COMPONENT}/${COMPONENT}.zip"
                 }
             }
         } // end of stages
