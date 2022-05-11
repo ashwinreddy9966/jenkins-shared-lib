@@ -40,7 +40,16 @@ def call() {
                     }
                 }
             }
-
-            } // end of stages
-        }
+            stage('Preparing the Artifactcs'){
+                steps {
+                    sh "echo Preparing the artifacts"
+                }
+            }
+            stage('Uploading the Artifactcs'){
+                steps {
+                    sh "echo Uploading the artifacts"
+                }
+            }
+        } // end of stages
     }
+}
