@@ -20,6 +20,26 @@ def call() {
                         common.sonarCheck() }
                 }
             }
+            stage('Test Cases') {
+                parallel {
+                    stage('Unit Tests') {
+                        steps {
+                            sh "echo UNIT TESTS Completed"
+                        }
+
+                    }
+                    stage('Integration Tests') {
+                        steps {
+                            sh "echo INTEGRATION TESTS Completed"
+                        }
+                    }
+                    stage('Functional Tests') {
+                        steps {
+                            sh "echo FUNCTIONAL TESTS Completed"
+                        }
+                    }
+                }
+            }
 
         } // end of stages
     }
