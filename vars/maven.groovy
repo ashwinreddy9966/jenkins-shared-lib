@@ -1,5 +1,4 @@
 env.APP_TYPE = "maven"
-
 def call() {
     node {
         common.lintCheck()
