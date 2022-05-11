@@ -1,7 +1,7 @@
 def lintCheck() {
     stage('Lint Checks') {
         if( env.APP_TYPE == "nodejs" ) {
-                # sh "~/node_modules/bin/jslinst.js server.js"
+                // sh "~/node_modules/bin/jslinst.js server.js"
                 sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
                 sh "echo [[  INFO  ]] : Lint Checks Completed"
         }
@@ -16,7 +16,7 @@ def lintCheck() {
             sh "echo [[  INFO  ]] : Lint Checks Completed"
         }
         else if( env.APP_TYPE == "python" ) {
-            # sh "pylint *.py"
+            // sh "pylint *.py"
             sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
             sh "echo [[  INFO  ]] : Lint Checks Completed"
         }
