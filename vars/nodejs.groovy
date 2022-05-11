@@ -45,7 +45,8 @@ def call() {
                     expression { env.TAG_NAME != null }
                 }
                 steps {
-                    sh "npm install && ls -ltr && ls -ltr node_modules"
+                    sh "npm install && ls -ltr && ls -ltr  node_modules"
+                    sh "zip ${COMPONENT}.zip node_modules server.js"
 
                 }
             }
