@@ -57,7 +57,7 @@ def call() {
                     expression { env.TAG_NAME != null }
                 }
                 steps {
-                    sh "curl -f -v -u ${NEXUS}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip.zip http://172.31.5.224:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
+                    sh "curl -f -v -u ${NEXUS}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://172.31.5.224:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
                 }
             }
         } // end of stages
