@@ -7,7 +7,6 @@ def call() {
         common.testCases()
     }
 }
-
 //def call() {
 //    pipeline {
 //        agent any
