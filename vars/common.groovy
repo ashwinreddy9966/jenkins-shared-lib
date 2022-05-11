@@ -32,17 +32,21 @@ def sonarCheck() {
     }
 }
 
+// Let's do that in parallel stages in groovy approach
+// Defining a empty array and passing it and parallel(stages), telling that to run in parallel
 def testCases() {
-    stage('Test Cases') {
-            stage('Unit Tests') {
-                    sh "echo UNIT TESTS Completed"
-            }
-            stage('Integration Tests') {
-                    sh "echo INTEGRATION TESTS Completed"
-            }
-            stage('Functional Tests') {
-                    sh "echo FUNCTIONAL TESTS Completed"
-            }
-        }
-    }
+    stage('build') {
+        def stages = [:]
 
+        stages["UnitTests"] = {
+            sh "echo UNIT TESTS Completed"
+        }
+        stages["IntegrationTests"] = {
+            sh "echo INTEGRATION TESTS Completed"
+        }
+        stages["FunctionalTests"] = {
+            sh "echo FUNCTIONAL TESTS Completed"
+        }
+        parallel(stages)
+    }
+}
