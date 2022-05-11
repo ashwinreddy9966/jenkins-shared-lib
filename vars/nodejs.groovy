@@ -6,8 +6,8 @@ def lintCheck() {
 def call() {
     pipeline {
         agent any
-        environment { SONAR = credentials('SONAR') }
-        environment { NEXUS = credentials('NEXUS') }
+        environment { SONAR = credentials('SONAR')
+                      NEXUS = credentials('NEXUS') }
         stages {
             stage('Lint Checks') {
                 steps {
