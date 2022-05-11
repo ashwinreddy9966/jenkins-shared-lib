@@ -1,9 +1,14 @@
-def lintCheck() {
-  //  sh "mvn checkstyle:check"
-    sh "mvn compile && ls -ltr && ls -ltr target/"
-    sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
-    sh "echo [[  INFO  ]] : Lint Checks Completed"
+env.APP_TYPE = "maven"
+
+def call() {
+    node {
+        common.lintCheck()
+        env.ARGS="-Dsonar.sources=."
+        common.sonarCheck()
+        common.testCases()
+    }
 }
+
 
 def call() {
     pipeline {

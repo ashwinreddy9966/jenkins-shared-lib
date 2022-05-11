@@ -1,7 +1,12 @@
-def lintCheck() {
+env.APP_TYPE = "python"
 
-    sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
-    sh "echo [[  INFO  ]] : Lint Checks Completed"
+def call() {
+    node {
+        common.lintCheck()
+        env.ARGS="-Dsonar.sources=."
+        common.sonarCheck()
+        common.testCases()
+    }
 }
 
 def call() {
@@ -11,7 +16,7 @@ def call() {
         stages {
             stage('Lint Checks') {
                 steps {
-                    script { lintCheck() }
+                    script { common.lintCheck() }
                 }
             }
             stage('SonarScan') {

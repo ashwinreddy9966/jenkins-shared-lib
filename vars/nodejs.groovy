@@ -1,7 +1,15 @@
-def lintCheck() {
-    sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
-    sh "echo [[  INFO  ]] : Lint Checks Completed"
-}
+env.APP_TYPE = "nodejs"
+
+def call() {
+    node {
+        common.lintCheck()
+        env.ARGS="-Dsonar.sources=."
+        common.sonarCheck()
+        common.testCases()
+        }
+    }
+
+
 
 def call() {
     pipeline {
@@ -11,7 +19,7 @@ def call() {
         stages {
             stage('Lint Checks') {
                 steps {
-                    script { lintCheck() }
+                    script { common.lintCheck() }
                 }
             }
             stage('SonarScan') {
@@ -21,26 +29,7 @@ def call() {
                         common.sonarCheck() }
                     }
                 }
-            stage('Test Cases') {
-                parallel {
-                    stage('Unit Tests') {
-                        steps {
-                            sh "echo UNIT TESTS Completed"
-                        }
 
-                    }
-                    stage('Integration Tests') {
-                        steps {
-                            sh "echo INTEGRATION TESTS Completed"
-                        }
-                    }
-                    stage('Functional Tests') {
-                        steps {
-                            sh "echo FUNCTIONAL TESTS Completed"
-                        }
-                    }
-                }
-            }
             stage('Checking the Releases'){
                 when {
                     expression { env.TAG_NAME != null }
