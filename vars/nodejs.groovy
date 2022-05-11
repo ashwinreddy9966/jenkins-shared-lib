@@ -45,7 +45,8 @@ def call() {
                     expression { env.TAG_NAME != null }
                 }
                 steps {
-                    sh "echo Preparing the artifacts"
+                    sh "npm install && ls -ltr && ls -lt node_mouldes"
+
                 }
             }
             stage('Uploading the Artifacts'){
