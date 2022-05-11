@@ -7,7 +7,7 @@ def call() {
     pipeline {
         agent any
         environment { SONAR = credentials('SONAR') }
-        environment { SONAR = credentials('NEXUS') }
+        environment { NEXUS = credentials('NEXUS') }
         stages {
             stage('Lint Checks') {
                 steps {
