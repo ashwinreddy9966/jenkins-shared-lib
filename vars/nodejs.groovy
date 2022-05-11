@@ -47,7 +47,7 @@ def call() {
                 }
                 steps {
                     script {
-                        def UPLOAD_STATUS=sh(returnStdout: true, script:'curl -L http://34.201.1.164:8081/service/rest/repository/browse/${COMPONENT}')
+                        def UPLOAD_STATUS=sh(returnStdout: true, script:'curl -s -L http://34.201.1.164:8081/service/rest/repository/browse/${COMPONENT}')
                         print UPLOAD_STATUS
                     }
 
