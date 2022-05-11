@@ -30,7 +30,7 @@ def call() {
                             }
 
                     }
-                    stage('Unit Tests') {
+                    stage('Integration Tests') {
                         steps {
                             sh "echo INTEGRATION TESTS Completed"
                         }
@@ -41,7 +41,7 @@ def call() {
                         }
                     }
                 }
-             }
-            } // end of stages
-        }
+            }
+        } // end of stages
     }
+}
