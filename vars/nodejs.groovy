@@ -47,6 +47,7 @@ def call() {
                 steps {
                     sh "npm install && ls -ltr && ls -ltr  node_modules"
                     sh "zip ${COMPONENT}.zip node_modules server.js"
+                    sh "ls -ltr"
 
                 }
             }
