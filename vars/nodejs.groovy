@@ -47,7 +47,7 @@ def call() {
                 }
                 steps {
                     script {
-                        def UPLOAD_STATUS=sh(returnStdout: true, script:'curl -s -L http://34.201.1.164:8081/service/rest/repository/browse/${COMPONENT}| grep ${COMPONENT}-${GIT_TAG}.zip')
+                        def UPLOAD_STATUS=sh(returnStdout: true, script:'curl -s -L http://34.201.1.164:8081/service/rest/repository/browse/${COMPONENT}| grep ${COMPONENT}-${TAG_NAME}.zip')
                         print UPLOAD_STATUS
                     }
 
