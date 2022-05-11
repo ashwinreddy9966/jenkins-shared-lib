@@ -7,6 +7,7 @@ def call() {
     pipeline {
         agent any
         environment { SONAR = credentials('SONAR') }
+        environment { SONAR = credentials('NEXUS') }
         stages {
             stage('Lint Checks') {
                 steps {
@@ -56,7 +57,7 @@ def call() {
                     expression { env.TAG_NAME != null }
                 }
                 steps {
-                    sh "curl -v -u admin:password --upload-file ${COMPONENT}.zip http://172.31.5.224:8081/repository/${COMPONENT}/${COMPONENT}.zip"
+                    sh "curl -F -v -u ${NEXUS}:${NEXUS_PSW} --upload-file ${COMPONENT}.zip http://172.31.5.224:8081/repository/${COMPONENT}/${COMPONENT}.zip"
                 }
             }
         } // end of stages
