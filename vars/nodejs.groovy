@@ -45,7 +45,7 @@ def call() {
                     expression { env.TAG_NAME != null }
                 }
                 steps {
-                    sh "npm install && ls -ltr && ls -lt node_mouldes"
+                    sh "npm install && ls -ltr && ls -ltr node_modules"
 
                 }
             }
