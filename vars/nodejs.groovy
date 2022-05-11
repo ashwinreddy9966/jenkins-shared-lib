@@ -40,12 +40,12 @@ def call() {
                     }
                 }
             }
-            stage('Preparing the Artifactcs'){
+            stage('Preparing the Artifacts'){
                 steps {
                     sh "echo Preparing the artifacts"
                 }
             }
-            stage('Uploading the Artifactcs'){
+            stage('Uploading the Artifacts'){
                 steps {
                     sh "echo Uploading the artifacts"
                 }
