@@ -4,8 +4,8 @@ def call() {
         git branch: 'main', url: "https://github.com/ashwinreddy9966/${COMPONENT}"
         env.APP_TYPE = "python"
         sh "ls -ltr"
-        common.lintCheck()
-        env.ARGS="-Dsonar.sources=."
+//        common.lintCheck()
+//        env.ARGS="-Dsonar.sources=."
         common.sonarCheck()
         common.testCases()
     }
