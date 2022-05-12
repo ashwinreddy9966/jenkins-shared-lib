@@ -49,3 +49,30 @@ def testCases() {
         parallel(stages)
     }
 }
+
+def artifacts() {
+    stage('Checking the Releases') {
+        env.UPLOAD_STATUS = sh(returnStdout: true, script: 'curl -s -L http://34.201.1.164:8081/service/rest/repository/browse/${COMPONENT}| grep ${COMPONENT}-${TAG_NAME}.zip || true')
+        print UPLOAD_STATUS
+    }
+    if (env.UPLOAD_STATUS = "") {
+        stage('Preparing the Artifacts') {
+            if (env.APP_TYPE == "nodejs") {
+                sh "npm install && ls -ltr && ls -ltr  node_modules"
+                sh "zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
+                sh "ls -ltr"
+            } else if (env.APP_TYPE == "maven") {
+                sh "echo Preparing $COMPONENT maven artifacts"
+            } else if (env.APP_TYPE == "python") {
+                sh "echo Preparing $COMPONENT python artifacts"
+            } else if (env.APP_TYPE == "golang") {
+                sh "echo Preparing $COMPONENT golang artifacts"
+            }
+            stage('Uploading the Artifacts') {
+                steps {
+                    sh "curl -f -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://172.31.5.224:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
+                }
+            }
+        }
+    }
+}
