@@ -7,6 +7,7 @@ def lintCheck() {
         }
         else if( env.APP_TYPE == "maven" ) {
             //  sh "mvn checkstyle:check"
+            sh "ls -ltr"
             sh "mvn compile && ls -ltr && ls -ltr target/"
             sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
             sh "echo [[  INFO  ]] : Lint Checks Completed"
