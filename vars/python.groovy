@@ -3,7 +3,6 @@ def call() {
         sh 'rm -rf *'
         git branch: 'main', url: "https://github.com/ashwinreddy9966/${COMPONENT}"
         env.APP_TYPE = "python"
-        sh "ls -ltr"
         common.lintCheck()
 //        env.ARGS="-Dsonar.sources=."
         common.sonarCheck()
