@@ -56,6 +56,7 @@ def artifacts() {
         print UPLOAD_STATUS
     }
     if (env.UPLOAD_STATUS = "") {
+
         stage('Preparing the Artifacts') {
             if (env.APP_TYPE == "nodejs") {
                 sh "npm install && ls -ltr && ls -ltr  node_modules"
