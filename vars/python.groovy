@@ -1,7 +1,7 @@
 def call() {
     node {
         env.APP_TYPE = "python"
-        ls -ltr
+        sh "ls -ltr"
         common.lintCheck()
         env.ARGS="-Dsonar.sources=."
         common.sonarCheck()
