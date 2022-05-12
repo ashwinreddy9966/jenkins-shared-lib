@@ -2,7 +2,7 @@ def call() {
     node {
         env.APP_TYPE = "maven"
         common.lintCheck()
-        env.ARGS="-Dsonar.sources="-Dsonar.java.binaries=target/""
+        env.ARGS="-Dsonar.sources=-Dsonar.java.binaries=target/"
         common.sonarCheck()
         common.testCases()
     }
