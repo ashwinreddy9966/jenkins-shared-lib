@@ -14,7 +14,7 @@ def lintCheck() {
             sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
             sh "echo [[  INFO  ]] : Lint Checks Completed"
         }
-        else ( env.APP_TYPE == "python" ) {
+        else if ( env.APP_TYPE == "python" ) {
             // sh "pylint *.py"
             sh "echo [[  INFO  ]] : Starting Lint Check for $COMPONENT"
             sh "echo [[  INFO  ]] : Lint Checks Completed"
