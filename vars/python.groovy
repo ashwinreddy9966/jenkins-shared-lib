@@ -5,7 +5,7 @@ def call() {
         env.APP_TYPE = "python"
         sh "ls -ltr"
 //        common.lintCheck()
-//        env.ARGS="-Dsonar.sources=."
+        env.ARGS="-Dsonar.sources=."
         common.sonarCheck()
         common.testCases()
     }
