@@ -1,7 +1,7 @@
 def call() {
     node {
         sh 'rm -rf *'
-        git branch: 'main', credentialsId: 'GitHub-Cred', url: 'https://github.com/roboshop-devops-project/${COMPONENT}'
+        git branch: 'main', credentialsId: 'GitHub-Cred', url: "https://github.com/ashwinreddy9966/${COMPONENT}"
         env.APP_TYPE = "maven"
         common.lintCheck()
         env.ARGS="Dsonar.java.binaries=target/"
