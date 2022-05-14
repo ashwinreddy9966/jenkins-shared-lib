@@ -66,7 +66,7 @@ def artifacts() {
                 sh ''' 
                         mvn clean package 
                         ls -ltr target/
-                        mv target/${COMPONENT}-${TAG_NAME}.jar ${COMPONENT}.jar
+                        mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
                         sh "zip ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar"
                    '''
             } else if (env.APP_TYPE == "python") {
