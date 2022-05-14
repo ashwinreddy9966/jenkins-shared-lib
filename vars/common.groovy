@@ -72,8 +72,9 @@ def artifacts() {
             } else if (env.APP_TYPE == "python") {
                 sh "zip ${COMPONENT}-${TAG_NAME}.zip *.py *.ini requirements.txt"
             } else if (env.APP_TYPE == "golang") {
+
+               script {   git branch: 'main', credentialsId: 'GitHub-Cred', url: 'https://github.com/roboshop-devops-project/dispatch' }
                 sh '''
-                  git branch: 'main', credentialsId: 'GitHub-Cred', url: 'https://github.com/roboshop-devops-project/dispatch\'
                   ls -ltr                  
                   go mod init ${COMPONENT} || true
                   go get  || true
