@@ -52,7 +52,7 @@ def testCases() {
 
 def artifacts() {
     stage('Checking the Releases') {
-        env.UPLOAD_STATUS = sh(returnStdout: true, script: 'curl -s -L http://44.202.207.75:8081/service/rest/repository/browse/${COMPONENT}| grep ${COMPONENT}-${TAG_NAME}.zip || true')
+        env.UPLOAD_STATUS = sh(returnStdout: true, script: 'curl -s -L http://172.31.5.224:8081/service/rest/repository/browse/${COMPONENT}| grep ${COMPONENT}-${TAG_NAME}.zip || true')
         print UPLOAD_STATUS
     }
     if (env.UPLOAD_STATUS == "") {
