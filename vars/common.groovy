@@ -60,14 +60,14 @@ def artifacts() {
         stage('Preparing the Artifacts') {
             if (env.APP_TYPE == "nodejs") {
                 sh "npm install && ls -ltr && ls -ltr ~/node_modules"
-                sh "zip ${COMPONENT}-${TAG_NAME}.zip ~/node_modules ~/server.js"
+                sh "zip -r ${COMPONENT}-${TAG_NAME}.zip ~/node_modules ~/server.js"
                 sh "ls -ltr && pwd"
             } else if (env.APP_TYPE == "maven") {
                 sh ''' 
                         mvn clean package 
                         ls -ltr target/
                         mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
-                        sh "zip ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar"
+                        sh "zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar"
                    '''
             } else if (env.APP_TYPE == "python") {
                 sh "zip ${COMPONENT}-${TAG_NAME}.zip *.py *.ini requirements.txt"
