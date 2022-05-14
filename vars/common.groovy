@@ -63,11 +63,19 @@ def artifacts() {
                 sh "zip ${COMPONENT}-${TAG_NAME}.zip ~/node_modules ~/server.js"
                 sh "ls -ltr && pwd"
             } else if (env.APP_TYPE == "maven") {
-                sh "echo Preparing $COMPONENT maven artifacts"
+                sh ''' 
+                        mvn clean package 
+                        ls -ltr target/
+                        mv target/${COMPONENT}-${TAG_NAME}.jar ${COMPONENT}.jar
+                        sh "zip ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar"
+                   '''
             } else if (env.APP_TYPE == "python") {
-                sh "echo Preparing $COMPONENT python artifacts"
+                sh "zip ${COMPONENT}-${TAG_NAME}.zip *.py *.ini requirements.txt"
             } else if (env.APP_TYPE == "golang") {
-                sh "echo Preparing $COMPONENT golang artifacts"
+                sh "go mod init dispatch"
+                sh "go get"
+                sh "go build"
+                sh "zip ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}"
             }
         }
             stage('Uploading the Artifacts') {
