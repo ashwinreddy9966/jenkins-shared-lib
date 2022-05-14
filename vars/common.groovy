@@ -74,7 +74,7 @@ def artifacts() {
             } else if (env.APP_TYPE == "golang") {
                 sh "pwd && ls -ltr"
                 sh "go mod init dispatch || true"
-                sh "go get"
+                sh "go get || true"
                 sh "go build"
                 sh "zip ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}"
             }
