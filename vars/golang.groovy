@@ -1,5 +1,7 @@
 def call() {
     node {
+        sh 'rm -rf *'
+        git branch: 'main', credentialsId: 'GitHub-Cred', url: 'https://github.com/roboshop-devops-project/dispatch'
         env.APP_TYPE = "golang"
         common.lintCheck()
         env.ARGS="-Dsonar.sources=."
