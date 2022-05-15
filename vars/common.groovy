@@ -66,10 +66,10 @@ def artifacts() {
                 sh ''' 
                         mvn clean package 
                         mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
-                        zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar
+                        zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar 
                    '''
             } else if (env.APP_TYPE == "python") {
-                sh "zip ${COMPONENT}-${TAG_NAME}.zip *.py *.ini requirements.txt"
+                sh "zip -r ${COMPONENT}-${TAG_NAME}.zip *.py *.ini requirements.txt "
             } else if (env.APP_TYPE == "golang") {
                 sh '''
                   ls -ltr                  
