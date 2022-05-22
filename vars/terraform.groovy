@@ -12,11 +12,14 @@ def call() {
         stage('Terraform Initialisization'){
             sh "cp env-${ENV}/Terrafile . ; terrafile"
             sh "terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars"
-
         }
+
         stage('Terraform Plan'){
             sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars"
+        }
 
+        stage('Terraform Apply'){
+            sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars"
         }
     }
 }
