@@ -1,7 +1,7 @@
 def call() {
-    if
+    if(!env.TERRAFORM_DIR)
     {
-        
+
 
     }
     properties([
