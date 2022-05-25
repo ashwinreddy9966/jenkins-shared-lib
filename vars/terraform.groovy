@@ -1,8 +1,7 @@
 def call() {
     if(!env.TERRAFORM_DIR)
     {
-
-
+        env.TERRAFROM_DIR = "./"
     }
     properties([
             parameters([
