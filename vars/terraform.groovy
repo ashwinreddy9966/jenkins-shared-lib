@@ -6,6 +6,7 @@ def call() {
     properties([
             parameters([
                     choice(choices: 'dev\nprod', description: "Select Environment", name: "ENV"),
+                    string(name: 'APP_VERSION',description: 'Choose App Version To Deploy', name: APP_VERSION)
             ]),
     ])
     node {
