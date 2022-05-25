@@ -22,7 +22,6 @@ def call() {
                 terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars
                 '''
             }
-
             stage('Terraform Plan') {
                 sh '''
                 cd ${TERRAFORM_DIR}
