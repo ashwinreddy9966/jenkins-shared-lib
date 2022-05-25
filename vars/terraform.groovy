@@ -14,6 +14,7 @@ def call() {
             git branch: 'main', url: "https://github.com/ashwinreddy9966/${REPONAME}"
 
             stage('Terraform Initialisization') {
+                sh "pwd ; ls -ltr"
                 sh "cd ${TERRAFORM_DIR}"
                 sh "terrafile -f  env-${ENV}/Terrafile"
                 sh "terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars"
