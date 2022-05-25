@@ -26,14 +26,14 @@ def call() {
             stage('Terraform Plan') {
                 sh '''
                 cd ${TERRAFORM_DIR}
-                terraform plan -var-file=env-${ENV}/${ENV}.tfvars
+                terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=${APP_VERSION}
                 '''
             }
 
             stage('Terraform Apply') {
                 sh '''
                 cd ${TERRAFORM_DIR}
-                terraform apply -auto-approve -var-file=env-${ENV}/${ENV}.tfvars
+                terraform apply -auto-approve -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=${APP_VERSION}
                 '''
             }
         }
