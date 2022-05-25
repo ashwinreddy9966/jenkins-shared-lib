@@ -10,7 +10,6 @@ def call() {
     ])
     node {
         ansiColor('xterm') {
-            sh 'rm -rf *'
             git branch: 'main', url: "https://github.com/ashwinreddy9966/${REPONAME}"
 
             stage('Terraform Initialisization') {
