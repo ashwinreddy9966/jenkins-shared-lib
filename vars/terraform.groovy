@@ -15,7 +15,7 @@ def call() {
 
             stage('Terraform Initialisization') {
                 sh "cd ${TERRAFORM_DIR}"
-                sh "cp env-${ENV}/Terrafile . ; terrafile"
+                sh "terrafile -f  env-${ENV}/Terrafile"
                 sh "terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars"
             }
 
