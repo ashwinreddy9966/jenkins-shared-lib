@@ -19,7 +19,7 @@ def call() {
                 cd ${TERRAFORM_DIR}
                 pwd ; ls -ltr
                 terrafile -f  env-${ENV}/Terrafile
-                terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars
+                terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
                 '''
             }
             stage('Terraform Plan') {
