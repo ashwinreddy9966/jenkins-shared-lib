@@ -78,18 +78,27 @@ def artifacts() {
                   go build
                   zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}
                 '''
-            }
-            else if (env.APP_TYPE == "nginx" ){
+            } else if (env.APP_TYPE == "nginx") {
                 sh '''
                   cd static 
                   zip -r ../${COMPONENT}-${TAG_NAME}.zip * 
         '''
             }
         }
-            stage('Uploading the Artifacts') {
-                withCredentials([usernamePassword(credentialsId: 'NEXUS', passwordVariable: 'NEXUS_PSW', usernameVariable: 'NEXUS_USR')]) {
-                    sh "curl -f -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://172.31.5.224:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
+        stage('Uploading the Artifacts') {
+            withCredentials([usernamePassword(credentialsId: 'NEXUS', passwordVariable: 'NEXUS_PSW', usernameVariable: 'NEXUS_USR')]) {
+                sh "curl -f -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://172.31.5.224:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
+            }
+        }
+        stage('Publishing AMI') {
+            ansiColor('xterm') {
+                sh '''
+                    rm -rf .terraform
+                    terraform init
+                    terraform apply -auto-approve -var APP_VERSION=${TAG_NAME}
+                '''
+                    }
                 }
             }
         }
-    }
+
