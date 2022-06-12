@@ -93,7 +93,7 @@ def artifacts() {
         stage('Publishing AMI') {
             ansiColor('xterm') {
                 sh '''
-                    
+                    pwd && ls -ltr
                     terraform init
                     terraform apply -auto-approve -var APP_VERSION=${TAG_NAME}
                 '''
