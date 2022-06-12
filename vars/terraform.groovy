@@ -34,6 +34,8 @@ def call() {
                 sh '''
                 cd ${TERRAFORM_DIR}
                 export TF_VAR_APP_VERSION=${APP_VERSION}
+                terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
+                terraform plan -var-file=env-${ENV}/${ENV}.tfvars
                 terraform apply -auto-approve -var-file=env-${ENV}/${ENV}.tfvars -parallelism 1
                 '''
             }
