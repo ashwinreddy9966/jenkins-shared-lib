@@ -90,15 +90,15 @@ def artifacts() {
                 sh "curl -f -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://172.31.5.224:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
             }
         }
-        stage('Publishing AMI') {
-            ansiColor('xterm') {
-                sh '''
-                    pwd && ls -ltr
-                    terraform init
-                    terraform apply -auto-approve -var APP_VERSION=${TAG_NAME}
-                '''
-                    }
-                }
-         //   }
+        // stage('Publishing AMI') {
+        //     ansiColor('xterm') {
+        //         sh '''
+        //             pwd && ls -ltr
+        //             terraform init
+        //             terraform apply -auto-approve -var APP_VERSION=${TAG_NAME}
+        //         '''
+        //             }
+        //         }
+           }
         }
 
