@@ -8,7 +8,7 @@ def call() {
             }
         if(env.TAG_NAME != null) {
             stage('Docker Build') {
-                sh "docker build -t 834725375088.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest ."
+                sh "docker tag 834725375088.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest 834725375088.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME}"
             }
         }
     }
