@@ -5,7 +5,7 @@ def call() {
 
         stage('Docker Build') {
             sh "ls -ltr && pwd && whoami && hostname"
-            sh "docker build . "
+            sh "docker build -t 834725375088.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest "
         }
     }
 }
