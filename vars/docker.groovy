@@ -8,9 +8,9 @@ def call() {
             }
         if(env.TAG_NAME != null) {
             stage('Docker Push') {
+
                 sh "docker tag 834725375088.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest 834725375088.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME}"
-            //    sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 834725375088.dkr.ecr.us-east-1.amazonaws.com"
-                sh '''docker login -u AWS https://834725375088.dkr.ecr.us-east-1.amazonaws.com -p $(aws ecr get-login-password --region us-east-1)'''
+                sh "docker login -u AWS https://834725375088.dkr.ecr.us-east-1.amazonaws.com -p $(aws ecr get-login-password --region us-east-1)"
                 sh "docker push 834725375088.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME}"
             }
         }
