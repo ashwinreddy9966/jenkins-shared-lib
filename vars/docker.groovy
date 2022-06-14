@@ -4,7 +4,7 @@ def call() {
         git branch: 'main', credentialsId: 'GitHub-Cred', url: "https://github.com/ashwinreddy9966/${COMPONENT}"
 
         stage('Docker Build') {
-            sh "ls -ltr && pwd && whoami && ifconfig"
+            sh "ls -ltr && pwd && whoami && hostname"
             sh "docker build . "
         }
     }
